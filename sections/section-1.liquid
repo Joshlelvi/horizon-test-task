@@ -51,10 +51,28 @@
       text-decoration: none;
       font-weight: 600;
     }
-    .btn--primary {
-      background: #000;
+    .sec1-btn {
+      display: inline-block;
+      max-width: 360px;
+      width: 100%;
+      padding: 19px 23px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      background: rgba(193, 155, 97, 1);
       color: #fff;
+      font-weight: 600;
+      font-size: 22px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(238, 238, 238, 1);
     }
+
+    .sec1-btn:hover {
+      border-color: rgba(193, 155, 97, 1);
+      background: transparent;
+      color: rgba(193, 155, 97, 1);
+    }
+   
     .btn--paypal {
       background: #ffc439;
       color: #111;
@@ -120,7 +138,7 @@
       </h2>
 
       <div class="awesome-sale__buttons">
-        <a href="{{ section.settings.button_url }}" class="btn btn--primary">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.button_url }}" class=sec1-btn">{{ section.settings.button_text }}</a>
         <a href="{{ section.settings.paypal_url }}" class="btn btn--paypal">
           {{ section.settings.paypal_text }}
           <img src="{{ 'paypal.png' | asset_url }}" alt="PayPal" class="paypal-logo">
