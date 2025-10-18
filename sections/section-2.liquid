@@ -273,7 +273,7 @@ Place in sections/ and add to a template or a JSON template section area.
           </div>
 
           <div class="ctc-thumb-swiper">
-            <div class="swiper-container thumb-swiper-{{ section.id }}">
+            <div class="swiper swiper-container thumb-swiper-{{ section.id }}">
               <div class="swiper-wrapper">
                 {% for block in section.blocks %}
                   {% if block.type == 'image' %}
