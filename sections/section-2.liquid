@@ -214,6 +214,11 @@
     font-size: 17px;
     text-align: center;
 }
+.c-sold{
+    font-weight:700;
+    font-size: 35px;
+    text-align: center;
+}
     /* Responsive / mobile styles */
     @media (max-width: 767px) {
       .ctc-wrapper { padding: 16px; }
@@ -367,7 +372,7 @@
       </div>
     </div>
     {% if section.settings.sold != blank %}
-    <p>{{section.settings.sold }}</p>
+    <p class="c-sold">{{section.settings.sold }}</p>
     {% endif %}
   </div>
 
