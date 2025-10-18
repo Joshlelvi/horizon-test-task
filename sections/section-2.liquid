@@ -1,0 +1,571 @@
+{% comment %}
+File: sections/custom-two-column.liquid
+Place in sections/ and add to a template or a JSON template section area.
+{% endcomment %}
+
+<div class="custom-two-column-section" data-section-id="{{ section.id }}">
+  <style>
+    /* Basic container & max-width */
+    .custom-two-column-section .ctc-wrapper {
+      margin: 0 auto;
+      max-width: {{ section.settings.section_max_width | default: 1116 }}px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    /* Desktop two columns */
+    .ctc-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* Left column structures */
+    .ctc-left .heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .ctc-heading {
+      margin: 0;
+      line-height: 1.1;
+      color: {{ section.settings.heading_color }};
+      font-weight: {{ section.settings.heading_font_weight }};
+      font-size: {{ section.settings.heading_desktop_font_size | default: 36 }}px;
+    }
+
+    .ctc-image {
+      width: {{ section.settings.image_desktop_width | default: 240 }}px;
+      height: {{ section.settings.image_desktop_width | default: 240 }}px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .ctc-subrich, .ctc-belowrich {
+      margin-top: 12px;
+      color: #333;
+    }
+
+    /* List styling: replace bullets with SVG placed inline */
+    .ctc-list {
+      margin-top: 16px;
+      padding: 0;
+      list-style: none;
+    }
+    .ctc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 10px 0;
+    }
+    .ctc-list .li-svg {
+      width: 15px; height: 12px;
+      flex: 0 0 15px;
+      margin-top: 4px;
+    }
+
+    /* Centered container with price & button */
+    .ctc-center-container {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+    .ctc-strike { text-decoration: line-through; color: #777; }
+    .ctc-price { font-size: 28px; font-weight: 700; color: #111; }
+
+    .ctc-order-btn {
+      display: inline-block;
+      max-width: 360px;
+      width: 100%;
+      padding: 19px 23px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      background: #b87664;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Right column: slider + thumbnails vertical */
+    .ctc-right {
+      position: relative;
+    }
+
+    /* Navigation arrows container top-left */
+    .ctc-arrows {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      display:flex;
+      gap:8px;
+    }
+    .ctc-arrow-btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;height:36px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,0.08);cursor:pointer;
+    }
+
+    /* Swiper layout: main left, thumbs right vertical */
+    .ctc-swiper-wrap {
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      gap: 12px;
+      align-items: start;
+    }
+    .ctc-main-swiper .swiper-slide img,
+    .ctc-thumb-swiper .swiper-slide img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:6px;
+      display:block;
+    }
+    .ctc-thumb-swiper {
+      height: 100%;
+    }
+    .ctc-thumb-swiper .swiper-slide {
+      height: 80px;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    .ctc-thumb-swiper .swiper-slide-thumb-active { opacity: 1; border:2px solid #b87664; box-sizing:border-box; }
+
+    /* Feature grid under slider */
+    .ctc-features {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .ctc-feature-item {
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding:8px;
+    }
+    .ctc-feature-item img {
+      width:34px; height:34px; object-fit:contain; object-position:center center; flex-shrink:0;
+      border-radius:4px;
+    }
+
+    /* Responsive / mobile styles */
+    @media (max-width: 767px) {
+      .ctc-wrapper { padding: 16px; }
+      .ctc-columns { display:block; }
+      .ctc-image {
+        width: {{ section.settings.image_mobile_width | default: 200 }}px;
+        height: {{ section.settings.image_mobile_width | default: 200 }}px;
+      }
+
+      /* For left column: stack image above heading and center */
+      .ctc-left .heading-row {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+      }
+      .ctc-heading {
+        font-size: {{ section.settings.heading_mobile_font_size | default: 22 }}px;
+        text-align:center;
+      }
+      .ctc-subrich, .ctc-belowrich { text-align:center; max-width: 328px; margin-left:auto; margin-right:auto; }
+
+      /* Hide slider on mobile; show only features box */
+      .ctc-swiper-wrap { display:none; }
+      .ctc-features { display:grid; grid-template-columns: 1fr; }
+    }
+
+  </style>
+
+  <div class="ctc-wrapper">
+    <div class="ctc-columns">
+      <!-- LEFT COLUMN -->
+      <div class="ctc-left">
+        <div class="heading-row">
+          <h2 class="ctc-heading"
+              style="font-weight: {{ section.settings.heading_font_weight }}; color: {{ section.settings.heading_color }};">
+            {{ section.settings.heading }}
+          </h2>
+
+          {% if section.settings.left_image != blank %}
+            <img class="ctc-image" src="{{ section.settings.left_image | img_url: 'master' }}" alt="{{ section.settings.heading | escape }}">
+          {% endif %}
+        </div>
+
+        {% if section.settings.sub_richtext != blank %}
+          <div class="ctc-subrich rte">{{ section.settings.sub_richtext }}</div>
+        {% endif %}
+
+        <!-- UL from list_item blocks -->
+        {% assign lists = section.blocks | where: "type", "list_item" %}
+        {% if lists.size > 0 %}
+          <ul class="ctc-list">
+            {% for block in lists %}
+              <li id="block-{{ block.id }}">
+                <!-- inline SVG as requested -->
+                <span class="li-svg">
+                  <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.5807 1.76562L4.41406 10.9415L1.66406 8.19146" stroke="#B87664" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="li-text">{{ block.settings.list_text }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <!-- Center container with below richtext, prices and order button -->
+        <div class="ctc-center-container">
+          {% if section.settings.below_richtext != blank %}
+            <div class="ctc-belowrich rte">{{ section.settings.below_richtext }}</div>
+          {% endif %}
+          {% if section.settings.strike_price != blank %}
+            <div class="ctc-strike">{{ section.settings.strike_price }}</div>
+          {% endif %}
+          {% if section.settings.price != blank %}
+            <div class="ctc-price">{{ section.settings.price }}</div>
+          {% endif %}
+
+          {% if section.settings.order_button_text != blank %}
+            <a class="ctc-order-btn" href="{{ section.settings.order_button_link }}" aria-label="{{ section.settings.order_button_text }}">
+              {{ section.settings.order_button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="ctc-right">
+        <!-- arrows top-left -->
+        <div class="ctc-arrows" aria-hidden="true">
+          <button class="ctc-arrow-btn" id="ctc-prev-{{ section.id }}" type="button" aria-label="Prev">
+            &#9664;
+          </button>
+          <button class="ctc-arrow-btn" id="ctc-next-{{ section.id }}" type="button" aria-label="Next">
+            &#9654;
+          </button>
+        </div>
+
+        <!-- Swiper area (hidden on mobile via CSS) -->
+        <div class="ctc-swiper-wrap">
+          <div class="ctc-main-swiper">
+            <div class="swiper-container main-swiper-{{ section.id }}">
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                  {% if block.type == 'image' %}
+                    <div class="swiper-slide">
+                      <img src="{{ block.settings.image | img_url: '2048x2048' }}" alt="{{ block.settings.image_alt | escape }}">
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="ctc-thumb-swiper">
+            <div class="swiper-container thumb-swiper-{{ section.id }}">
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                  {% if block.type == 'image' %}
+                    <div class="swiper-slide">
+                      <img src="{{ block.settings.image | img_url: '200x200' }}" alt="{{ block.settings.image_alt | escape }}">
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- features grid: use image_with_text block type -->
+        <div class="ctc-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'image_with_text' %}
+              <div class="ctc-feature-item">
+                {% if block.settings.feature_image != blank %}
+                  <img src="{{ block.settings.feature_image | img_url: '100x100' }}" alt="{{ block.settings.feature_image_alt | escape }}">
+                {% endif %}
+                <div class="feature-text">{{ block.settings.feature_text }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper CDN (only once per page ideally; if theme provides, remove these) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+  <script>
+    (function(){
+      var sectionId = "{{ section.id }}";
+      var prevBtn = document.getElementById('ctc-prev-{{ section.id }}');
+      var nextBtn = document.getElementById('ctc-next-{{ section.id }}');
+
+      // Only init Swiper if there are image blocks and on desktop
+      var mainSelector = '.main-swiper-{{ section.id }}';
+      var thumbSelector = '.thumb-swiper-{{ section.id }}';
+
+      function initSwiperIfNeeded() {
+        // mobile detection (match your mobile breakpoint)
+        var isMobile = window.matchMedia('(max-width: 767px)').matches;
+        // check if there are slides
+        var mainContainer = document.querySelector(mainSelector + ' .swiper-wrapper');
+        if (!mainContainer || mainContainer.children.length === 0) return;
+
+        // Destroy existing instances if any
+        if (window['ctcMainSwiper_{{ section.id }}']) {
+          window['ctcMainSwiper_{{ section.id }}'].destroy(true, true);
+          window['ctcThumbSwiper_{{ section.id }}'] && window['ctcThumbSwiper_{{ section.id }}'].destroy(true, true);
+          window['ctcMainSwiper_{{ section.id }}'] = null;
+          window['ctcThumbSwiper_{{ section.id }}'] = null;
+        }
+
+        if (isMobile) {
+          // On mobile we hide the slider (CSS already hides). No need to init.
+          return;
+        }
+
+        // Initialize thumb first
+        var thumbSwiper = new Swiper(thumbSelector, {
+          direction: 'vertical',
+          slidesPerView: Math.min(4, document.querySelectorAll(thumbSelector + ' .swiper-slide').length),
+          spaceBetween: 8,
+          watchSlidesProgress: true,
+          watchSlidesVisibility: true,
+        });
+
+        var mainSwiper = new Swiper(mainSelector, {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          navigation: {
+            nextEl: '#ctc-next-{{ section.id }}',
+            prevEl: '#ctc-prev-{{ section.id }}',
+          },
+          thumbs: {
+            swiper: thumbSwiper
+          },
+        });
+
+        // store for potential destroy
+        window['ctcMainSwiper_{{ section.id }}'] = mainSwiper;
+        window['ctcThumbSwiper_{{ section.id }}'] = thumbSwiper;
+
+        // attach arrow buttons if user wants both on top-left (already wired via navigation)
+        prevBtn && prevBtn.addEventListener('click', function(){ mainSwiper.slidePrev(); });
+        nextBtn && nextBtn.addEventListener('click', function(){ mainSwiper.slideNext(); });
+      }
+
+      // init on load and on resize (debounced)
+      initSwiperIfNeeded();
+      var resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initSwiperIfNeeded, 150);
+      });
+
+      // Ensure images in left column respect mobile/desktop widths set by user
+      function applyResponsiveImageSizes() {
+        var leftImg = document.querySelector('[data-section-id="{{ section.id }}"] .ctc-left .ctc-image');
+        if (!leftImg) return;
+        var isMobile = window.matchMedia('(max-width: 767px)').matches;
+        var width = isMobile ? {{ section.settings.image_mobile_width | default: 200 }} : {{ section.settings.image_desktop_width | default: 240 }};
+        leftImg.style.width = width + 'px';
+        leftImg.style.height = width + 'px';
+      }
+      applyResponsiveImageSizes();
+      window.addEventListener('resize', applyResponsiveImageSizes);
+
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Section 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your heading here"
+    },
+    {
+      "type": "range",
+      "id": "heading_desktop_font_size",
+      "label": "Heading desktop font size (px)",
+      "min": 18,
+      "max": 72,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_mobile_font_size",
+      "label": "Heading mobile font size (px)",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "default": 22
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" },
+        { "value": "800", "label": "800" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left column image (next to heading)"
+    },
+    {
+      "type": "range",
+      "id": "image_desktop_width",
+      "label": "Left image desktop width (px)",
+      "min": 80,
+      "max": 600,
+      "step": 10,
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "image_mobile_width",
+      "label": "Left image mobile width (px)",
+      "min": 60,
+      "max": 360,
+      "step": 10,
+      "default": 200
+    },
+    {
+      "type": "richtext",
+      "id": "sub_richtext",
+      "label": "Sub rich text (below heading-row)",
+      "default": "<p>Short intro or subtitle</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "below_richtext",
+      "label": "Centered rich text (above prices)",
+      "default": "<p>Additional description that sits above price & CTA.</p>"
+    },
+    {
+      "type": "text",
+      "id": "strike_price",
+      "label": "Striked price",
+      "default": "$199"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$149"
+    },
+    {
+      "type": "text",
+      "id": "order_button_text",
+      "label": "Order now button text",
+      "default": "Order now"
+    },
+    {
+      "type": "url",
+      "id": "order_button_link",
+      "label": "Order button link"
+    },
+    {
+      "type": "range",
+      "id": "section_max_width",
+      "label": "Section max width (px)",
+      "min": 600,
+      "max": 1600,
+      "step": 10,
+      "default": 1120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image (for slider)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "image"
+        }
+      ]
+    },
+    {
+      "type": "image_with_text",
+      "name": "Image with text (feature)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Feature image (34x34)"
+        },
+        {
+          "type": "text",
+          "id": "feature_image_alt",
+          "label": "Alt text",
+          "default": "image"
+        },
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature text",
+          "default": "Feature label"
+        }
+      ]
+    },
+    {
+      "type": "list_item",
+      "name": "List item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_text",
+          "label": "Item text",
+          "default": "List item text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Section 2"
+    }
+  ]
+}
+{% endschema %}
