@@ -15,8 +15,7 @@ Place in sections/ and add to a template or a JSON template section area.
 
     /* Desktop two columns */
     .ctc-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       gap: 24px;
       align-items: start;
     }
@@ -117,8 +116,9 @@ Place in sections/ and add to a template or a JSON template section area.
 
     /* Swiper layout: main left, thumbs right vertical */
     .ctc-swiper-wrap {
-      display: flex;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      gap: 12px;
       align-items: start;
     }
     .ctc-left{
