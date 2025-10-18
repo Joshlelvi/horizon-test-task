@@ -1,9 +1,9 @@
 {% assign anc_id = section.id | split:'_' | last %}
 
-<div class="custom-two-column-section" data-section-id="{{ anc_id }}">
+<div class="ctcs" data-section-id="{{ anc_id }}">
   <style>
     /* Basic container & max-width */
-    .custom-two-column-section .ctc-wrapper {
+    .ctcs .ctc-wrapper {
       margin: 0 auto;
       max-width: {{ section.settings.section_max_width | default: 1116 }}px;
       padding: 24px;
@@ -228,7 +228,7 @@
 }
     /* Responsive / mobile styles */
     @media (max-width: 767px) {
-      .custom-two-column-section .ctc-wrapper { padding: 16px; }
+      .ctcs .ctc-wrapper { padding: 16px; }
       .ctc-columns { display:block; }
       .ctc-image {
         width: {{ section.settings.image_mobile_width | default: 200 }}px;
