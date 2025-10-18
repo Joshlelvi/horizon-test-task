@@ -11,6 +11,17 @@
   "sections": {
     "section_2_wHtpCb": {
       "type": "section-2",
+      "blocks": {
+        "image_LGRbbg": {
+          "type": "image",
+          "settings": {
+            "image_alt": "image"
+          }
+        }
+      },
+      "block_order": [
+        "image_LGRbbg"
+      ],
       "name": "Section 2",
       "settings": {
         "heading": "Your heading here",
