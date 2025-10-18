@@ -23,6 +23,7 @@
         "paypal_text": "Pay with",
         "paypal_url": "",
         "afterpay_text": "or 4 interest-free payments of $57.60 with",
+        "ap": "shopify://shop_images/Group_1000003645_2x_0cf9c836-4e63-42ed-ab30-3b128fda110d.png",
         "end_text": "Valentine’s Day Sale Ends at 12PM Feb 14th 2025",
         "countdown_end": "2026-02-14T12:00:00",
         "timezone": "UTC"
