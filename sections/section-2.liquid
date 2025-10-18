@@ -1,9 +1,6 @@
-{% comment %}
-File: sections/custom-two-column.liquid
-Place in sections/ and add to a template or a JSON template section area.
-{% endcomment %}
+{% assign anc_id = section.id | split:'_' | last %}
 
-<div class="custom-two-column-section" data-section-id="{{ section.id }}">
+<div class="custom-two-column-section" data-section-id="{{ anc_id }}">
   <style>
     /* Basic container & max-width */
     .custom-two-column-section .ctc-wrapper {
@@ -279,10 +276,10 @@ Place in sections/ and add to a template or a JSON template section area.
       <div class="ctc-right">
         <!-- arrows top-left -->
         <div class="ctc-arrows" aria-hidden="true">
-          <button class="ctc-arrow-btn" id="ctc-prev-{{ section.id }}" type="button" aria-label="Prev">
+          <button class="ctc-arrow-btn" id="ctc-prev-{{ anc_id }}" type="button" aria-label="Prev">
             <svg class="prev-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg>
           </button>
-          <button class="ctc-arrow-btn" id="ctc-next-{{ section.id }}" type="button" aria-label="Next">
+          <button class="ctc-arrow-btn" id="ctc-next-{{ anc_id }}" type="button" aria-label="Next">
            <svg class="next-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg>
           </button>
         </div>
@@ -290,7 +287,7 @@ Place in sections/ and add to a template or a JSON template section area.
         <!-- Swiper area (hidden on mobile via CSS) -->
         <div class="ctc-swiper-wrap">
           <div class="ctc-main-swiper">
-            <div class="swiper swiper-container main-swiper-{{ section.id }}">
+            <div class="swiper swiper-container main-swiper-{{ anc_id }}">
               <div class="swiper-wrapper">
                 {% for block in section.blocks %}
                   {% if block.type == 'image' %}
@@ -304,7 +301,7 @@ Place in sections/ and add to a template or a JSON template section area.
           </div>
 
           <div class="ctc-thumb-swiper">
-            <div class="swiper swiper-container thumb-swiper-{{ section.id }}">
+            <div class="swiper swiper-container thumb-swiper-{{ anc_id }}">
               <div class="swiper-wrapper">
                 {% for block in section.blocks %}
                   {% if block.type == 'image' %}
@@ -341,13 +338,13 @@ Place in sections/ and add to a template or a JSON template section area.
 
   <script>
     (function(){
-      var sectionId = "{{ section.id }}";
-      var prevBtn = document.getElementById('ctc-prev-{{ section.id }}');
-      var nextBtn = document.getElementById('ctc-next-{{ section.id }}');
+      var sectionId = "{{ anc_id }}";
+      var prevBtn = document.getElementById('ctc-prev-{{ anc_id }}');
+      var nextBtn = document.getElementById('ctc-next-{{ anc_id }}');
 
       // Only init Swiper if there are image blocks and on desktop
-      var mainSelector = '.main-swiper-{{ section.id }}';
-      var thumbSelector = '.thumb-swiper-{{ section.id }}';
+      var mainSelector = '.main-swiper-{{ anc_id }}';
+      var thumbSelector = '.thumb-swiper-{{ anc_id }}';
 
       function initSwiperIfNeeded() {
         // mobile detection (match your mobile breakpoint)
@@ -357,11 +354,11 @@ Place in sections/ and add to a template or a JSON template section area.
         if (!mainContainer || mainContainer.children.length === 0) return;
 
         // Destroy existing instances if any
-        if (window['ctcMainSwiper_{{ section.id }}']) {
-          window['ctcMainSwiper_{{ section.id }}'].destroy(true, true);
-          window['ctcThumbSwiper_{{ section.id }}'] && window['ctcThumbSwiper_{{ section.id }}'].destroy(true, true);
-          window['ctcMainSwiper_{{ section.id }}'] = null;
-          window['ctcThumbSwiper_{{ section.id }}'] = null;
+        if (window['ctcMainSwiper_{{ anc_id }}']) {
+          window['ctcMainSwiper_{{ anc_id }}'].destroy(true, true);
+          window['ctcThumbSwiper_{{ anc_id }}'] && window['ctcThumbSwiper_{{ anc_id }}'].destroy(true, true);
+          window['ctcMainSwiper_{{ anc_id }}'] = null;
+          window['ctcThumbSwiper_{{ anc_id }}'] = null;
         }
 
         if (isMobile) {
@@ -382,8 +379,8 @@ Place in sections/ and add to a template or a JSON template section area.
           slidesPerView: 1,
           spaceBetween: 10,
           navigation: {
-            nextEl: '#ctc-next-{{ section.id }}',
-            prevEl: '#ctc-prev-{{ section.id }}',
+            nextEl: '#ctc-next-{{ anc_id }}',
+            prevEl: '#ctc-prev-{{ anc_id }}',
           },
           thumbs: {
             swiper: thumbSwiper
@@ -391,8 +388,8 @@ Place in sections/ and add to a template or a JSON template section area.
         });
 
         // store for potential destroy
-        window['ctcMainSwiper_{{ section.id }}'] = mainSwiper;
-        window['ctcThumbSwiper_{{ section.id }}'] = thumbSwiper;
+        window['ctcMainSwiper_{{ anc_id }}'] = mainSwiper;
+        window['ctcThumbSwiper_{{ anc_id }}'] = thumbSwiper;
 
         // attach arrow buttons if user wants both on top-left (already wired via navigation)
         prevBtn && prevBtn.addEventListener('click', function(){ mainSwiper.slidePrev(); });
@@ -409,7 +406,7 @@ Place in sections/ and add to a template or a JSON template section area.
 
       // Ensure images in left column respect mobile/desktop widths set by user
       function applyResponsiveImageSizes() {
-        var leftImg = document.querySelector('[data-section-id="{{ section.id }}"] .ctc-left .ctc-image');
+        var leftImg = document.querySelector('[data-section-id="{{ anc_id }}"] .ctc-left .ctc-image');
         if (!leftImg) return;
         var isMobile = window.matchMedia('(max-width: 767px)').matches;
         var width = isMobile ? {{ section.settings.image_mobile_width | default: 200 }} : {{ section.settings.image_desktop_width | default: 240 }};
