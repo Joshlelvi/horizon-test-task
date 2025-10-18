@@ -96,6 +96,46 @@
           "settings": {
             "list_text": "Easy-snap magnetic attachments"
           }
+        },
+        "image_with_text_pfXtRp": {
+          "type": "image_with_text",
+          "settings": {
+            "feature_image": "shopify://shop_images/lucide_check-circle.svg",
+            "feature_image_alt": "image",
+            "feature_text": "Fulfilled by Amazon "
+          }
+        },
+        "image_with_text_4DEdkz": {
+          "type": "image_with_text",
+          "settings": {
+            "feature_image": "shopify://shop_images/lucide_check-circle_1.svg",
+            "feature_image_alt": "Free Shipping ",
+            "feature_text": "Free Shipping "
+          }
+        },
+        "image_with_text_K3DgWM": {
+          "type": "image_with_text",
+          "settings": {
+            "feature_image": "shopify://shop_images/lucide_check-circle_2.svg",
+            "feature_image_alt": "Try it for 60  days",
+            "feature_text": "Try it for 60  days—money-back guarantee "
+          }
+        },
+        "image_with_text_cGiQMc": {
+          "type": "image_with_text",
+          "settings": {
+            "feature_image": "shopify://shop_images/lucide_check-circle_3.svg",
+            "feature_image_alt": "Secure Checkout ",
+            "feature_text": "Secure Checkout "
+          }
+        },
+        "image_with_text_L7yVGT": {
+          "type": "image_with_text",
+          "settings": {
+            "feature_image": "shopify://shop_images/lucide_check-circle_4.svg",
+            "feature_image_alt": "1-year Warranty ",
+            "feature_text": "1-year Warranty "
+          }
         }
       },
       "block_order": [
@@ -111,7 +151,12 @@
         "list_item_cwYkge",
         "list_item_hf3CT7",
         "list_item_Pt3ryP",
-        "list_item_BXyApr"
+        "list_item_BXyApr",
+        "image_with_text_pfXtRp",
+        "image_with_text_4DEdkz",
+        "image_with_text_K3DgWM",
+        "image_with_text_cGiQMc",
+        "image_with_text_L7yVGT"
       ],
       "name": "Section 2",
       "settings": {
