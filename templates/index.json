@@ -116,9 +116,9 @@
       "name": "Section 2",
       "settings": {
         "heading": "SRI DRYQ",
-        "heading_desktop_font_size": 36,
+        "heading_desktop_font_size": 40,
         "heading_mobile_font_size": 22,
-        "heading_font_weight": "700",
+        "heading_font_weight": "600",
         "heading_color": "#daa555",
         "left_image": "shopify://shop_images/Good_Housekeeping_2.webp",
         "image_desktop_width": 140,
