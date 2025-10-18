@@ -1,6 +1,8 @@
 
   <style>
-    .awesome-sale {
+    .awesome-sale{
+    background-image: url({{ section.settings.mbg_image | image_url: width: 2000 }});
+
       width: 100%;
       background-repeat: no-repeat;
       background-position: center;
@@ -141,11 +143,14 @@
     max-width: 232px;
     margin: auto;
 }
+.awesome-sale{
+    background-image: url({{ section.settings.mbg_image | image_url: width: 2000 }});
+}
 }
   </style>
 
 
-<section class="awesome-sale" style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }}); background-size: cover; background-position: center;">
+<section class="awesome-sale" style=" background-size: cover; background-position: center;">
   <div class="awesome-sale__container" style="max-width: {{ section.settings.content_width }}px;">
     <div class="awesome-sale__inner">
       <h1 class="awesome-sale__title">AWESOME!</h1>
