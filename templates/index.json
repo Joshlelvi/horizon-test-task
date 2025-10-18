@@ -60,6 +60,42 @@
             "image": "shopify://shop_images/DryQ3-5.webp",
             "image_alt": "image"
           }
+        },
+        "list_item_pHd87j": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Intelligent heat control dries hair faster with optimal airflow speeds."
+          }
+        },
+        "list_item_GMcn8n": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Negative ions to support frizz-free styling"
+          }
+        },
+        "list_item_cwYkge": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Infrared light therapy strengthens weak, brittle hair and stimulates growth."
+          }
+        },
+        "list_item_hf3CT7": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Features 4 modes, 3 speed settings, and a memory function."
+          }
+        },
+        "list_item_Pt3ryP": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Lightweight, compact, and quiet, making it easy to take anywhere"
+          }
+        },
+        "list_item_BXyApr": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Easy-snap magnetic attachments"
+          }
         }
       },
       "block_order": [
@@ -69,7 +105,13 @@
         "image_Y8RNzK",
         "image_VFdVEt",
         "image_P97fcJ",
-        "image_heANN4"
+        "image_heANN4",
+        "list_item_pHd87j",
+        "list_item_GMcn8n",
+        "list_item_cwYkge",
+        "list_item_hf3CT7",
+        "list_item_Pt3ryP",
+        "list_item_BXyApr"
       ],
       "name": "Section 2",
       "settings": {
