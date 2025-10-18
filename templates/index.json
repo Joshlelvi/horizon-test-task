@@ -15,12 +15,61 @@
         "image_LGRbbg": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/DryQ3-7_14f174d1-9a47-4478-8323-42654bb4aad8.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_Afmth7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-10.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_gBMmUK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-1.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_Y8RNzK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-3_2c6f1a1a-cbfd-4636-955a-ae1041969272.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_VFdVEt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-4.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_P97fcJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-2.webp",
+            "image_alt": "image"
+          }
+        },
+        "image_heANN4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DryQ3-5.webp",
             "image_alt": "image"
           }
         }
       },
       "block_order": [
-        "image_LGRbbg"
+        "image_LGRbbg",
+        "image_Afmth7",
+        "image_gBMmUK",
+        "image_Y8RNzK",
+        "image_VFdVEt",
+        "image_P97fcJ",
+        "image_heANN4"
       ],
       "name": "Section 2",
       "settings": {
