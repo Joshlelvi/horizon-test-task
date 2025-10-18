@@ -1,48 +1,3 @@
-{% comment %}
-  Section: AWESOME! Sale Banner
-  Author: GPT-5
-{% endcomment %}
-
-<section class="awesome-sale" style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }}); background-size: cover; background-position: center;">
-  <div class="awesome-sale__container" style="max-width: {{ section.settings.content_width }}px;">
-    <div class="awesome-sale__inner">
-      <h1 class="awesome-sale__title">AWESOME!</h1>
-
-      <h2 class="awesome-sale__subheading">
-        <span class="awesome-sale__highlight">{{ section.settings.subheading_part1 }}</span>
-        <span class="awesome-sale__regular">{{ section.settings.subheading_part2 }}</span>
-      </h2>
-
-      <div class="awesome-sale__buttons">
-        <a href="{{ section.settings.button_url }}" class="btn btn--primary">{{ section.settings.button_text }}</a>
-        <a href="{{ section.settings.paypal_url }}" class="btn btn--paypal">
-          {{ section.settings.paypal_text }}
-          <img src="{{ 'paypal.png' | asset_url }}" alt="PayPal" class="paypal-logo">
-        </a>
-      </div>
-
-      <div class="afterpay-section">
-        <p>{{ section.settings.afterpay_text }}
-          <img src="{{ 'afterpay.png' | asset_url }}" alt="AfterPay" class="afterpay-logo">
-        </p>
-      </div>
-
-      <div class="awesome-sale__separator">
-        <svg width="56" height="2" viewBox="0 0 56 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0.0800781" y1="1.375" x2="55.9199" y2="1.375" stroke="#D3D3D3"/>
-        </svg>
-      </div>
-
-      <p class="awesome-sale__note">{{ section.settings.end_text }}</p>
-
-      <div class="countdown" data-end="{{ section.settings.countdown_end }}" data-timezone="{{ section.settings.timezone }}">
-        <div class="countdown-item"><span class="count">00</span><span class="label">Days</span></div>
-        <div class="countdown-item"><span class="count">00</span><span class="label">Hours</span></div>
-        <div class="countdown-item"><span class="count">00</span><span class="label">Minutes</span></div>
-        <div class="countdown-item"><span class="count">00</span><span class="label">Seconds</span></div>
-      </div>
-    </div>
-  </div>
 
   <style>
     .awesome-sale {
@@ -152,6 +107,48 @@
       font-weight: 500;
     }
   </style>
+
+
+<section class="awesome-sale" style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }}); background-size: cover; background-position: center;">
+  <div class="awesome-sale__container" style="max-width: {{ section.settings.content_width }}px;">
+    <div class="awesome-sale__inner">
+      <h1 class="awesome-sale__title">AWESOME!</h1>
+
+      <h2 class="awesome-sale__subheading">
+        <span class="awesome-sale__highlight">{{ section.settings.subheading_part1 }}</span>
+        <span class="awesome-sale__regular">{{ section.settings.subheading_part2 }}</span>
+      </h2>
+
+      <div class="awesome-sale__buttons">
+        <a href="{{ section.settings.button_url }}" class="btn btn--primary">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.paypal_url }}" class="btn btn--paypal">
+          {{ section.settings.paypal_text }}
+          <img src="{{ 'paypal.png' | asset_url }}" alt="PayPal" class="paypal-logo">
+        </a>
+      </div>
+
+      <div class="afterpay-section">
+        <p>{{ section.settings.afterpay_text }}
+          <img src="{{ 'afterpay.png' | asset_url }}" alt="AfterPay" class="afterpay-logo">
+        </p>
+      </div>
+
+      <div class="awesome-sale__separator">
+        <svg width="56" height="2" viewBox="0 0 56 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0.0800781" y1="1.375" x2="55.9199" y2="1.375" stroke="#D3D3D3"/>
+        </svg>
+      </div>
+
+      <p class="awesome-sale__note">{{ section.settings.end_text }}</p>
+
+      <div class="countdown" data-end="{{ section.settings.countdown_end }}" data-timezone="{{ section.settings.timezone }}">
+        <div class="countdown-item"><span class="count">00</span><span class="label">Days</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Hours</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Minutes</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Seconds</span></div>
+      </div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
