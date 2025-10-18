@@ -1,7 +1,7 @@
 
   <style>
     .awesome-sale{
-    background-image: url({{ section.settings.mbg_image | image_url: width: 2000 }});
+    background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});
 
       width: 100%;
       background-repeat: no-repeat;
@@ -233,6 +233,11 @@
       "type": "image_picker",
       "id": "bg_image",
       "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mbg_image",
+      "label": "mobile Background Image"
     },
     {
       "type": "range",
