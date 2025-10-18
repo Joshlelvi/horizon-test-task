@@ -82,11 +82,11 @@
         "image_desktop_width": 140,
         "image_mobile_width": 140,
         "sub_richtext": "<p>Say <strong>goodbye to frizz </strong>with the <strong>advanced </strong>SRI DryQ.</p>",
-        "below_richtext": "<p>Additional description that sits above price & CTA.</p>",
-        "strike_price": "$199",
-        "price": "$149",
+        "below_richtext": "<p>Limited Time <strong>VALENTINE’S DAY</strong> sale</p>",
+        "strike_price": "$299.99",
+        "price": "$232.99",
         "order_button_text": "Order now",
-        "order_button_link": "",
+        "order_button_link": "#",
         "section_max_width": 1120
       }
     },
