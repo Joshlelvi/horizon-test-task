@@ -1,0 +1,285 @@
+{% comment %}
+  Section: AWESOME! Sale Banner
+  Author: GPT-5
+{% endcomment %}
+
+<section class="awesome-sale" style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }}); background-size: cover; background-position: center;">
+  <div class="awesome-sale__container" style="max-width: {{ section.settings.content_width }}px;">
+    <div class="awesome-sale__inner">
+      <h1 class="awesome-sale__title">AWESOME!</h1>
+
+      <h2 class="awesome-sale__subheading">
+        <span class="awesome-sale__highlight">{{ section.settings.subheading_part1 }}</span>
+        <span class="awesome-sale__regular">{{ section.settings.subheading_part2 }}</span>
+      </h2>
+
+      <div class="awesome-sale__buttons">
+        <a href="{{ section.settings.button_url }}" class="btn btn--primary">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.paypal_url }}" class="btn btn--paypal">
+          {{ section.settings.paypal_text }}
+          <img src="{{ 'paypal.png' | asset_url }}" alt="PayPal" class="paypal-logo">
+        </a>
+      </div>
+
+      <div class="afterpay-section">
+        <p>{{ section.settings.afterpay_text }}
+          <img src="{{ 'afterpay.png' | asset_url }}" alt="AfterPay" class="afterpay-logo">
+        </p>
+      </div>
+
+      <div class="awesome-sale__separator">
+        <svg width="56" height="2" viewBox="0 0 56 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0.0800781" y1="1.375" x2="55.9199" y2="1.375" stroke="#D3D3D3"/>
+        </svg>
+      </div>
+
+      <p class="awesome-sale__note">{{ section.settings.end_text }}</p>
+
+      <div class="countdown" data-end="{{ section.settings.countdown_end }}" data-timezone="{{ section.settings.timezone }}">
+        <div class="countdown-item"><span class="count">00</span><span class="label">Days</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Hours</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Minutes</span></div>
+        <div class="countdown-item"><span class="count">00</span><span class="label">Seconds</span></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .awesome-sale {
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 60px 0;
+    }
+    .awesome-sale__container {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .awesome-sale__inner {
+      background: rgba(255, 255, 255, 0.44);
+      border-radius: 5px;
+      border: 1px solid rgba(230, 230, 230, 1);
+      text-align: center;
+      padding: 40px;
+      width: 100%;
+    }
+    .awesome-sale__title {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .awesome-sale__subheading {
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+    .awesome-sale__highlight {
+      color: {{ section.settings.highlight_color }};
+      font-weight: 700;
+      font-style: italic;
+    }
+    .awesome-sale__regular {
+      font-weight: 400;
+      margin-left: 6px;
+    }
+    .awesome-sale__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn--primary {
+      background: #000;
+      color: #fff;
+    }
+    .btn--paypal {
+      background: #ffc439;
+      color: #111;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .paypal-logo {
+      height: 20px;
+    }
+    .afterpay-section p {
+      font-size: 14px;
+      margin-top: 4px;
+      color: #333;
+    }
+    .afterpay-logo {
+      height: 20px;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    .awesome-sale__separator {
+      margin: 20px auto;
+    }
+    .awesome-sale__note {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(51, 51, 51, 1);
+      margin-bottom: 20px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .countdown-item {
+      background: rgba(0, 0, 0, 0.59);
+      border-radius: 5px;
+      padding: 15px 10px;
+      color: #fff;
+      text-align: center;
+      min-width: 60px;
+    }
+    .countdown-item .count {
+      font-size: 24px;
+      font-weight: 700;
+      display: block;
+    }
+    .countdown-item .label {
+      font-size: 10px;
+      font-weight: 500;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const countdown = document.querySelector('.countdown');
+      if (!countdown) return;
+
+      const endDate = new Date(countdown.dataset.end);
+      function updateCountdown() {
+        const now = new Date();
+        const diff = endDate - now;
+
+        if (diff <= 0) {
+          countdown.innerHTML = "<p>Sale Ended</p>";
+          clearInterval(interval);
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        const counts = countdown.querySelectorAll('.count');
+        counts[0].textContent = days.toString().padStart(2, '0');
+        counts[1].textContent = hours.toString().padStart(2, '0');
+        counts[2].textContent = minutes.toString().padStart(2, '0');
+        counts[3].textContent = seconds.toString().padStart(2, '0');
+      }
+
+      updateCountdown();
+      const interval = setInterval(updateCountdown, 1000);
+    });
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Section 1",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 800,
+      "max": 1600,
+      "step": 10,
+      "default": 1170,
+      "label": "Container Width (px)"
+    },
+    {
+      "type": "text",
+      "id": "subheading_part1",
+      "label": "Subheading Part 1",
+      "default": "Your discount of $67 off"
+    },
+    {
+      "type": "text",
+      "id": "subheading_part2",
+      "label": "Subheading Part 2",
+      "default": "has been automatically applied."
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight Color",
+      "default": "#E91E63"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Primary Button Text",
+      "default": "Order Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "paypal_text",
+      "label": "PayPal Button Text",
+      "default": "Pay with"
+    },
+    {
+      "type": "url",
+      "id": "paypal_url",
+      "label": "PayPal Button URL"
+    },
+    {
+      "type": "text",
+      "id": "afterpay_text",
+      "label": "AfterPay Text",
+      "default": "or 4 interest-free payments of $57.60 with"
+    },
+    {
+      "type": "text",
+      "id": "end_text",
+      "label": "Sale End Text",
+      "default": "Valentine’s Day Sale Ends at 12PM Feb 14th 2025"
+    },
+    {
+      "type": "text",
+      "id": "countdown_end",
+      "label": "Countdown End Date",
+      "default": "2026-02-14T12:00:00"
+    },
+    {
+      "type": "select",
+      "id": "timezone",
+      "label": "Timezone",
+      "options": [
+        { "value": "UTC", "label": "UTC" },
+        { "value": "America/New_York", "label": "New York" },
+        { "value": "Europe/London", "label": "London" },
+        { "value": "Asia/Tokyo", "label": "Tokyo" }
+      ],
+      "default": "UTC"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section 1"
+    }
+  ]
+}
+{% endschema %}
