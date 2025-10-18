@@ -366,7 +366,9 @@
         </div>
       </div>
     </div>
+    {% if section.settings.sold != blank %}
     <p>{{section.settings.sold }}</p>
+    {% endif %}
   </div>
 
   <!-- Swiper CDN (only once per page ideally; if theme provides, remove these) -->
