@@ -139,7 +139,7 @@
         <a href="{{ section.settings.button_url }}" class="sec1-btn">{{ section.settings.button_text }}</a>
         <a href="{{ section.settings.paypal_url }}" class="btn btn--paypal">
           {{ section.settings.paypal_text }}
-          <img src="{{ 'paypal.png' | asset_url }}" alt="PayPal" class="paypal-logo">
+          <img src="{{ section.settings.pp | image_url }}" alt="PayPal" class="paypal-logo">
         </a>
       </div>
 
@@ -263,6 +263,18 @@
       "id": "afterpay_text",
       "label": "AfterPay Text",
       "default": "or 4 interest-free payments of $57.60 with"
+    },
+    {
+        "type": "image_picker",
+        "id": "pp",
+        "label": "paypal logo",
+        
+    },
+    {
+        "type": "image_picker",
+        "id": "ap",
+        "label": "after pay logo",
+        
     },
     {
       "type": "text",
