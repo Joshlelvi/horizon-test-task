@@ -157,6 +157,12 @@ Place in sections/ and add to a template or a JSON template section area.
   display: flex;
   flex-direction: column;
   height: auto !important; /* allow auto height, not cumulative stacking */
+}.ctc-thumb-swiper .swiper-slide {
+  height: 80px !important; /* fixed size for thumbnails */
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
     .ctc-thumb-swiper .swiper-slide {
       height: 80px;
