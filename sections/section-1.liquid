@@ -143,9 +143,11 @@
     max-width: 232px;
     margin: auto;
 }
+{% if section.settings.mbg_image != blank %}
 .awesome-sale{
     background-image: url({{ section.settings.mbg_image | image_url: width: 2000 }});
 }
+{% endif %}
 }
   </style>
 
