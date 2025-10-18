@@ -1,8 +1,7 @@
-{% assign anc_id = section.id | split:'_' | last %}
+{% assign anc_id = section.id | split: '_' | last %}
 
 <div class="ctcs" data-section-id="{{ anc_id }}">
   <style>
-    /* Basic container & max-width */
     .ctcs .ctc-wrapper {
       margin: 0 auto;
       max-width: {{ section.settings.section_max_width | default: 1116 }}px;
@@ -10,14 +9,12 @@
       box-sizing: border-box;
     }
 
-    /* Desktop two columns */
     .ctc-columns {
       display: flex;
       gap: 24px;
       align-items: start;
     }
 
-    /* Left column structures */
     .ctc-left .heading-row {
       display: flex;
       justify-content: space-between;
@@ -42,40 +39,43 @@
       border-radius: 6px;
     }
 
-   .ctc-subrich {
-    margin-top: 25px;
-    color: #333;
-    margin-bottom: 33px;
-}
-    .ctc-belowrich.rte {
-    margin-top: 35px;
-    margin-bottom: 20px;
-    max-width: 212px;
-    font-size: 18px;
-    font-weight: 500;
-    color: rgba(51, 51, 51, 1);
-}
+    .ctc-subrich {
+      margin-top: 25px;
+      color: #333;
+      margin-bottom: 33px;
+    }
 
-    /* List styling: replace bullets with SVG placed inline */
+    .ctc-belowrich.rte {
+      margin-top: 35px;
+      margin-bottom: 20px;
+      max-width: 212px;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+    }
+
     .ctc-list {
       margin-top: 16px;
       padding: 0;
       list-style: none;
     }
+
     .ctc-list li {
       display: flex;
       align-items: center;
       gap: 12px;
       margin: 10px 0;
-      font-size: 17px;line-height: 30px;
+      font-size: 17px;
+      line-height: 30px;
     }
+
     .ctc-list .li-svg {
-      width: 15px; height: 12px;
+      width: 15px;
+      height: 12px;
       flex: 0 0 15px;
       margin-top: 4px;
     }
 
-    /* Centered container with price & button */
     .ctc-center-container {
       margin-top: 18px;
       display: flex;
@@ -84,197 +84,240 @@
       text-align: center;
       gap: 12px;
     }
-    .ctc-strike { 
-        text-decoration: line-through;
-    color: rgba(192, 192, 192, 1);
-    font-size: 18px;
- }
-    .ctc-price { font-size: 30px; font-weight: 600; color:rgba(193, 155, 97, 1); }
 
-   .ctc-order-btn {
-    display: inline-block;
-    max-width: 360px;
-    width: 100%;
-    padding: 19px 23px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 8px;
-    background: rgba(193, 155, 97, 1);
-    color: #fff;
-    font-weight: 600;
-    font-size: 22px;
-    transition:all 0.3s ease;
-    border: 1px solid rgba(238, 238, 238, 1);
-}
-.ctc-order-btn:hover{
-    border-color:rgba(193, 155, 97, 1);
-    background:transparent;
-    color:rgba(193, 155, 97, 1);
-}
+    .ctc-strike {
+      text-decoration: line-through;
+      color: rgba(192, 192, 192, 1);
+      font-size: 18px;
+    }
 
-    /* Right column: slider + thumbnails vertical */
+    .ctc-price {
+      font-size: 30px;
+      font-weight: 600;
+      color: rgba(193, 155, 97, 1);
+    }
+
+    .ctc-order-btn {
+      display: inline-block;
+      max-width: 360px;
+      width: 100%;
+      padding: 19px 23px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      background: rgba(193, 155, 97, 1);
+      color: #fff;
+      font-weight: 600;
+      font-size: 22px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(238, 238, 238, 1);
+    }
+
+    .ctc-order-btn:hover {
+      border-color: rgba(193, 155, 97, 1);
+      background: transparent;
+      color: rgba(193, 155, 97, 1);
+    }
+
     .ctc-right {
       position: relative;
     }
 
-    /* Navigation arrows container top-left */
     .ctc-arrows {
       position: absolute;
       top: 8px;
       left: 8px;
       z-index: 20;
-      display:flex;
-      gap:14px;
+      display: flex;
+      gap: 14px;
     }
-    .ctc-arrow-btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: background .5s ease,color .5s ease;
-      width:44px;height:44px;border-radius:100px;background: hsla(0,0%,100%,.75);border:none;cursor:pointer;
-    }
-    .ctc-arrow-btn:hover{
-    background:#fff;
-    }
-      .ctc-arrow-btn svg path{
-    fill:#c19b61
 
-}
-    /* Swiper layout: main left, thumbs right vertical */
+    .ctc-arrow-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background 0.5s ease, color 0.5s ease;
+      width: 44px;
+      height: 44px;
+      border-radius: 100px;
+      background: hsla(0, 0%, 100%, 0.75);
+      border: none;
+      cursor: pointer;
+    }
+
+    .ctc-arrow-btn:hover {
+      background: #fff;
+    }
+
+    .ctc-arrow-btn svg path {
+      fill: #c19b61;
+    }
+
     .ctc-swiper-wrap {
       display: grid;
       grid-template-columns: 1fr 80px;
       gap: 12px;
-      
-    width: 100%;
-    overflow: hidden;
+      width: 100%;
+      overflow: hidden;
       align-items: start;
     }
+
     .ctc-main-swiper {
-    display: block;
-    position: relative;
-    width: 100%;
-    overflow:hidden;
-}
-    .ctc-left{
-    width: calc(40% - 12px);
+      display: block;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
     }
-    .ctc-right{
-        flex: 1;
-    width: calc(60% - 12px);
+
+    .ctc-left {
+      width: calc(40% - 12px);
     }
+
+    .ctc-right {
+      flex: 1;
+      width: calc(60% - 12px);
+    }
+
     .ctc-main-swiper .swiper-slide img,
     .ctc-thumb-swiper .swiper-slide img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:6px;
-      display:block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
     }
+
     .ctc-thumb-swiper {
-      width: 80px; /* your chosen width */
-  height: 100%; /* match height of main swiper */
-  max-height: 500px; /* prevents runaway growth; adjust to your main slider height */
-  overflow: hidden;
-  position: relative;
+      width: 80px;
+      height: 100%;
+      max-height: 500px;
+      overflow: hidden;
+      position: relative;
     }
+
     .ctc-thumb-swiper .swiper-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: auto !important; /* allow auto height, not cumulative stacking */
-}.ctc-thumb-swiper .swiper-slide {
-  height: 80px !important; /* fixed size for thumbnails */
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      display: flex;
+      flex-direction: column;
+      height: auto !important;
+    }
+
     .ctc-thumb-swiper .swiper-slide {
-      height: 80px;
+      height: 80px !important;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       opacity: 0.9;
       cursor: pointer;
     }
-    .ctc-thumb-swiper .swiper-slide-thumb-active { opacity: 1; border:2px solid #b87664; box-sizing:border-box; }
 
-    /* Feature grid under slider */
+    .ctc-thumb-swiper .swiper-slide-thumb-active {
+      opacity: 1;
+      border: 2px solid #b87664;
+      box-sizing: border-box;
+    }
+
     .ctc-features {
       margin-top: 14px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 5px;
     }
+
     .feature-text {
-    font-size: 17px;
-}
+      font-size: 17px;
+    }
+
     .ctc-feature-item {
-      display:flex;
-      align-items:center;
+      display: flex;
+      align-items: center;
       gap: 10px;
-      padding:4px 8px;
+      padding: 4px 8px;
     }
+
     .ctc-feature-item img {
-      width:34px; height:34px; object-fit:contain; object-position:center center; flex-shrink:0;
-      border-radius:4px;
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      object-position: center center;
+      flex-shrink: 0;
+      border-radius: 4px;
     }
-.ctc-subrich p {
-    font-size: 17px;
-    text-align: center;
-}
-.c-sold{
-    font-weight:600;
-    font-size: 35px;
-    text-align: center;
-}
-    /* Responsive / mobile styles */
+
+    .ctc-subrich p {
+      font-size: 17px;
+      text-align: center;
+    }
+
+    .c-sold {
+      font-weight: 600;
+      font-size: 35px;
+      text-align: center;
+    }
+
     @media (max-width: 767px) {
-      .ctcs .ctc-wrapper { padding: 16px; }
-      .ctc-columns { display:block; }
+      .ctcs .ctc-wrapper {
+        padding: 16px;
+      }
+
+      .ctc-columns {
+        display: block;
+      }
+
       .ctc-image {
         width: {{ section.settings.image_mobile_width | default: 200 }}px;
         height: {{ section.settings.image_mobile_width | default: 200 }}px;
       }
 
-      /* For left column: stack image above heading and center */
       .ctc-left .heading-row {
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
+
       .ctc-heading {
         font-size: {{ section.settings.heading_mobile_font_size | default: 22 }}px;
-        text-align:center;
+        text-align: center;
       }
-      .ctc-subrich, .ctc-belowrich { text-align:center; max-width: 328px; margin-left:auto; margin-right:auto; }
 
-      /* Hide slider on mobile; show only features box */
-      .ctc-swiper-wrap,.ctc-arrows { display:none; }
-      .ctc-features { display:grid; grid-template-columns: 1fr; }
-a.ctc-order-btn {
-    max-width: 100%;
-}
-       .ctc-left{
-        flex: 1;
-    width: 100%;
-    }
-    .ctc-right{
-        flex: 1;
-    width: 100%;
-    }
-    }
+      .ctc-subrich,
+      .ctc-belowrich {
+        text-align: center;
+        max-width: 328px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
+      .ctc-swiper-wrap,
+      .ctc-arrows {
+        display: none;
+      }
+
+      .ctc-features {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      a.ctc-order-btn {
+        max-width: 100%;
+      }
+
+      .ctc-left,
+      .ctc-right {
+        flex: 1;
+        width: 100%;
+      }
+    }
   </style>
 
   <div class="ctc-wrapper">
     <div class="ctc-columns">
-      <!-- LEFT COLUMN -->
       <div class="ctc-left">
         <div class="heading-row">
-          <h2 class="ctc-heading">
-            {{ section.settings.heading }}
-          </h2>
-
+          <h2 class="ctc-heading">{{ section.settings.heading }}</h2>
           {% if section.settings.left_image != blank %}
             <img class="ctc-image" src="{{ section.settings.left_image | img_url: 'master' }}" alt="{{ section.settings.heading | escape }}">
           {% endif %}
@@ -284,13 +327,11 @@ a.ctc-order-btn {
           <div class="ctc-subrich rte">{{ section.settings.sub_richtext }}</div>
         {% endif %}
 
-        <!-- UL from list_item blocks -->
         {% assign lists = section.blocks | where: "type", "list_item" %}
         {% if lists.size > 0 %}
           <ul class="ctc-list">
             {% for block in lists %}
               <li id="block-{{ block.id }}">
-                <!-- inline SVG as requested -->
                 <span class="li-svg">
                   <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.5807 1.76562L4.41406 10.9415L1.66406 8.19146" stroke="#B87664" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -302,7 +343,6 @@ a.ctc-order-btn {
           </ul>
         {% endif %}
 
-        <!-- Center container with below richtext, prices and order button -->
         <div class="ctc-center-container">
           {% if section.settings.below_richtext != blank %}
             <div class="ctc-belowrich rte">{{ section.settings.below_richtext }}</div>
@@ -313,28 +353,26 @@ a.ctc-order-btn {
           {% if section.settings.price != blank %}
             <div class="ctc-price">{{ section.settings.price }}</div>
           {% endif %}
-
           {% if section.settings.order_button_text != blank %}
-            <a class="ctc-order-btn" href="{{ section.settings.order_button_link }}" aria-label="{{ section.settings.order_button_text }}">
-              {{ section.settings.order_button_text }}
-            </a>
+            <a class="ctc-order-btn" href="{{ section.settings.order_button_link }}" aria-label="{{ section.settings.order_button_text }}">{{ section.settings.order_button_text }}</a>
           {% endif %}
         </div>
       </div>
 
-      <!-- RIGHT COLUMN -->
       <div class="ctc-right">
-        <!-- arrows top-left -->
         <div class="ctc-arrows" aria-hidden="true">
           <button class="ctc-arrow-btn" id="ctc-prev-{{ anc_id }}" type="button" aria-label="Prev">
-            <svg class="prev-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg>
+            <svg class="prev-button-icon" viewBox="0 0 100 100">
+              <path d="M10,50 L60,100 L70,90 L30,50 L70,10 L60,0 Z" class="arrow"></path>
+            </svg>
           </button>
           <button class="ctc-arrow-btn" id="ctc-next-{{ anc_id }}" type="button" aria-label="Next">
-           <svg class="next-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg>
+            <svg class="next-button-icon" viewBox="0 0 100 100">
+              <path d="M10,50 L60,100 L70,90 L30,50 L70,10 L60,0 Z" class="arrow" transform="translate(100,100) rotate(180)"></path>
+            </svg>
           </button>
         </div>
 
-        <!-- Swiper area (hidden on mobile via CSS) -->
         <div class="ctc-swiper-wrap">
           <div class="ctc-main-swiper">
             <div class="swiper swiper-container main-swiper-{{ anc_id }}">
@@ -365,7 +403,6 @@ a.ctc-order-btn {
           </div>
         </div>
 
-        <!-- features grid: use image_with_text block type -->
         <div class="ctc-features">
           {% for block in section.blocks %}
             {% if block.type == 'image_with_text' %}
@@ -380,52 +417,43 @@ a.ctc-order-btn {
         </div>
       </div>
     </div>
+
     {% if section.settings.sold != blank %}
-    <p class="c-sold">{{section.settings.sold }}</p>
+      <p class="c-sold">{{ section.settings.sold }}</p>
     {% endif %}
   </div>
 
-  <!-- Swiper CDN (only once per page ideally; if theme provides, remove these) -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
 
   <script>
-    (function(){
-      var sectionId = "{{ anc_id }}";
+    (function () {
       var prevBtn = document.getElementById('ctc-prev-{{ anc_id }}');
       var nextBtn = document.getElementById('ctc-next-{{ anc_id }}');
-
-      // Only init Swiper if there are image blocks and on desktop
       var mainSelector = '.main-swiper-{{ anc_id }}';
       var thumbSelector = '.thumb-swiper-{{ anc_id }}';
 
       function initSwiperIfNeeded() {
-        // mobile detection (match your mobile breakpoint)
         var isMobile = window.matchMedia('(max-width: 767px)').matches;
-        // check if there are slides
         var mainContainer = document.querySelector(mainSelector + ' .swiper-wrapper');
         if (!mainContainer || mainContainer.children.length === 0) return;
 
-        // Destroy existing instances if any
         if (window['ctcMainSwiper_{{ anc_id }}']) {
           window['ctcMainSwiper_{{ anc_id }}'].destroy(true, true);
-          window['ctcThumbSwiper_{{ anc_id }}'] && window['ctcThumbSwiper_{{ anc_id }}'].destroy(true, true);
+          if (window['ctcThumbSwiper_{{ anc_id }}'])
+            window['ctcThumbSwiper_{{ anc_id }}'].destroy(true, true);
           window['ctcMainSwiper_{{ anc_id }}'] = null;
           window['ctcThumbSwiper_{{ anc_id }}'] = null;
         }
 
-        if (isMobile) {
-          // On mobile we hide the slider (CSS already hides). No need to init.
-          return;
-        }
+        if (isMobile) return;
 
-        // Initialize thumb first
         var thumbSwiper = new Swiper(thumbSelector, {
           direction: 'vertical',
           slidesPerView: Math.min(4, document.querySelectorAll(thumbSelector + ' .swiper-slide').length),
           spaceBetween: 8,
           watchSlidesProgress: true,
-          watchSlidesVisibility: true,
+          watchSlidesVisibility: true
         });
 
         var mainSwiper = new Swiper(mainSelector, {
@@ -433,31 +461,25 @@ a.ctc-order-btn {
           spaceBetween: 10,
           navigation: {
             nextEl: '#ctc-next-{{ anc_id }}',
-            prevEl: '#ctc-prev-{{ anc_id }}',
+            prevEl: '#ctc-prev-{{ anc_id }}'
           },
-          thumbs: {
-            swiper: thumbSwiper
-          },
+          thumbs: { swiper: thumbSwiper }
         });
 
-        // store for potential destroy
         window['ctcMainSwiper_{{ anc_id }}'] = mainSwiper;
         window['ctcThumbSwiper_{{ anc_id }}'] = thumbSwiper;
 
-        // attach arrow buttons if user wants both on top-left (already wired via navigation)
-        prevBtn && prevBtn.addEventListener('click', function(){ mainSwiper.slidePrev(); });
-        nextBtn && nextBtn.addEventListener('click', function(){ mainSwiper.slideNext(); });
+        prevBtn && prevBtn.addEventListener('click', () => mainSwiper.slidePrev());
+        nextBtn && nextBtn.addEventListener('click', () => mainSwiper.slideNext());
       }
 
-      // init on load and on resize (debounced)
       initSwiperIfNeeded();
       var resizeTimer;
-      window.addEventListener('resize', function(){
+      window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(initSwiperIfNeeded, 150);
       });
 
-      // Ensure images in left column respect mobile/desktop widths set by user
       function applyResponsiveImageSizes() {
         var leftImg = document.querySelector('[data-section-id="{{ anc_id }}"] .ctc-left .ctc-image');
         if (!leftImg) return;
@@ -466,12 +488,15 @@ a.ctc-order-btn {
         leftImg.style.width = width + 'px';
         leftImg.style.height = width + 'px';
       }
+
       applyResponsiveImageSizes();
       window.addEventListener('resize', applyResponsiveImageSizes);
-
     })();
   </script>
 </div>
+
+
+
 
 {% schema %}
 {
