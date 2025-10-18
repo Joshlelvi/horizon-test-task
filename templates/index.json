@@ -14,6 +14,7 @@
       "name": "Section 1",
       "settings": {
         "bg_image": "shopify://shop_images/image.png",
+        "mbg_image": "shopify://shop_images/image_1.png",
         "content_width": 1170,
         "subheading_part1": "Your discount of $67 off",
         "subheading_part2": "has been automatically applied.",
