@@ -7,8 +7,28 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
+    "section_2_wHtpCb": {
+      "type": "section-2",
+      "name": "Section 2",
+      "settings": {
+        "heading": "Your heading here",
+        "heading_desktop_font_size": 36,
+        "heading_mobile_font_size": 22,
+        "heading_font_weight": "700",
+        "heading_color": "#111111",
+        "image_desktop_width": 240,
+        "image_mobile_width": 200,
+        "sub_richtext": "<p>Short intro or subtitle</p>",
+        "below_richtext": "<p>Additional description that sits above price & CTA.</p>",
+        "strike_price": "$199",
+        "price": "$149",
+        "order_button_text": "Order now",
+        "order_button_link": "",
+        "section_max_width": 1120
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -282,6 +302,7 @@
     }
   },
   "order": [
+    "section_2_wHtpCb",
     "hero_jVaWmY",
     "product_list_fa6P9H"
   ]
