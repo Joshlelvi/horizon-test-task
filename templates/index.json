@@ -137,7 +137,7 @@
         "image_with_text_K3DgWM": {
           "type": "image_with_text",
           "settings": {
-            "feature_image": "shopify://shop_images/tryit.svg",
+            "feature_image": "shopify://shop_images/lucide_check-circle_5.svg",
             "feature_image_alt": "Try it for 60  days",
             "feature_text": "Try it for 60  days—money-back guarantee "
           }
