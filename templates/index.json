@@ -25,7 +25,6 @@
         "paypal_url": "",
         "afterpay_text": "or 4 interest-free payments of $57.60 with",
         "pp": "shopify://shop_images/image_76.png",
-        "ap": "shopify://shop_images/Group_1000003645_2x_0cf9c836-4e63-42ed-ab30-3b128fda110d.png",
         "end_text": "Valentine’s Day Sale Ends at 12PM Feb 14th 2025",
         "countdown_end": "2026-02-14T12:00:00",
         "timezone": "UTC"
@@ -130,7 +129,6 @@
         "image_with_text_4DEdkz": {
           "type": "image_with_text",
           "settings": {
-            "feature_image": "shopify://shop_images/lucide_check-circle_1.svg",
             "feature_image_alt": "Free Shipping ",
             "feature_text": "Free Shipping "
           }
@@ -138,7 +136,7 @@
         "image_with_text_K3DgWM": {
           "type": "image_with_text",
           "settings": {
-            "feature_image": "shopify://shop_images/lucide_check-circle_2.svg",
+            "feature_image": "shopify://shop_images/tryit.svg",
             "feature_image_alt": "Try it for 60  days",
             "feature_text": "Try it for 60  days—money-back guarantee "
           }
@@ -146,7 +144,7 @@
         "image_with_text_cGiQMc": {
           "type": "image_with_text",
           "settings": {
-            "feature_image": "shopify://shop_images/lucide_check-circle_3.svg",
+            "feature_image": "shopify://shop_images/secure-checkout_18e94521-00d6-428e-bb65-6fea0b9af475.svg",
             "feature_image_alt": "Secure Checkout ",
             "feature_text": "Secure Checkout "
           }
@@ -154,7 +152,7 @@
         "image_with_text_L7yVGT": {
           "type": "image_with_text",
           "settings": {
-            "feature_image": "shopify://shop_images/lucide_check-circle_4.svg",
+            "feature_image": "shopify://shop_images/one-year-warranty.svg",
             "feature_image_alt": "1-year Warranty ",
             "feature_text": "1-year Warranty "
           }
@@ -188,7 +186,6 @@
         "heading_mobile_font_size": 40,
         "heading_font_weight": "600",
         "heading_color": "#daa555",
-        "left_image": "shopify://shop_images/Good_Housekeeping_2.webp",
         "image_desktop_width": 140,
         "image_mobile_width": 140,
         "sub_richtext": "<p>Say <strong>goodbye to frizz </strong>with the <strong>advanced </strong>SRI DryQ.</p>",
