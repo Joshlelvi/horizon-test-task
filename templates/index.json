@@ -187,6 +187,7 @@
         "heading_mobile_font_size": 40,
         "heading_font_weight": "600",
         "heading_color": "#daa555",
+        "left_image": "shopify://shop_images/voted-1.png",
         "image_desktop_width": 140,
         "image_mobile_width": 140,
         "sub_richtext": "<p>Say <strong>goodbye to frizz </strong>with the <strong>advanced </strong>SRI DryQ.</p>",
