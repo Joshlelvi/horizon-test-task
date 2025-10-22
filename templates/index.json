@@ -129,6 +129,7 @@
         "image_with_text_4DEdkz": {
           "type": "image_with_text",
           "settings": {
+            "feature_image": "shopify://shop_images/free-shipping.svg",
             "feature_image_alt": "Free Shipping ",
             "feature_text": "Free Shipping "
           }
